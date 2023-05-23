@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  h3{
+    color: green;
+  }
+  body{
+    background-color: #ffffff;
+    color: rgb(19, 1, 1);
+    background-image: url('/static/images/img.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  }
+
+label{
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+input{
+  display: block;
+  height: 40px;
+  width: 100%;
+  background-color: 5,2rgba(255,2555,0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 300;
+  color: white;
+}
+.btn{
+  
+    
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+    padding: 5px 12px;
+}
+textarea{
+  resize:both;
+  background-color: rgb(21, 2, 2);
+  font-size: 20px;
+  border-radius: 6px;
+  color: white;
+  
+}
+</style>
+
+<body>
+<h3>ChatGPT</h3>
+<form method="post">
+  {%csrf_token%}
+  <label>Write an Instruction</label>
+  
+  <!-- <input type="text"  class="form-control" name="user_input"> -->
+  <div align ="center"><textarea  name="user_input" rows="4" cols="60" ></textarea></div><br>
+  <div align = "center"><button type="submit" class="btn">submit </button></div>
+</form>
+{% if response %}    
+    <div>
+      <br>
+      <br>
+      <br>
+      {{ response|safe }}
+    </div>
+{% endif %}
+</body>
+
+{% endblock content %}
